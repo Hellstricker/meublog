@@ -1,5 +1,5 @@
 
-# **[Título do Projeto] - Aplicação de Blog Simples com MVC e API RESTful**
+# **MeuBlog - Aplicação de Blog Simples com MVC e API RESTful**
 
 ## **1. Apresentação**
 
