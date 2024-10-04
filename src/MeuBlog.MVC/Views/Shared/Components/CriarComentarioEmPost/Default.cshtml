@@ -1,0 +1,36 @@
+﻿@model MeuBlog.Shared.Domain.Comentario
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            <form asp-action="Create" asp-controller="Comentarios" asp-route-returnUrl="@Context.Request.Path">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="PostId" />
+                <div class="form-floating">
+                    <textarea asp-for="Descricao" class="form-control" placeholder="Escreva aqui seu comentário"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <br />
+                @if (User.Identity!.IsAuthenticated)
+                {
+                    <div>
+                        <input type="submit" value="Comentar" class="btn btn-success" />
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <a asp-page="/Account/Login" asp-area="Identity" asp-route-returnUrl="@ViewBag.ReturnUrl" class="btn btn-success">Comentar</a>
+                    </div>
+                }
+            </form>
+        </section>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

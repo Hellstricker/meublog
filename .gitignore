@@ -1,0 +1,8 @@
+/.vs
+/src/MeuBlog.Shared/bin
+/src/MeuBlog.Shared/obj
+/src/MeuBlog.MVC/obj
+/src/MeuBlog.MVC/bin
+/src/MeuBlog.API/bin
+/src/MeuBlog.API/obj
+/.github
