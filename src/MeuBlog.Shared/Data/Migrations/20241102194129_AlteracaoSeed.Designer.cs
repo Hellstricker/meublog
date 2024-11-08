@@ -3,6 +3,7 @@ using System;
 using MeuBlog.Shared.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeuBlog.Shared.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241102194129_AlteracaoSeed")]
+    partial class AlteracaoSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -243,17 +246,17 @@ namespace MeuBlog.Shared.Data.Migrations
                         {
                             Id = "4936c34c-d5a9-4adf-81d5-2f6d956dbc32",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "58aaf969-e4ef-45d0-af3c-bafdf07fd540",
+                            ConcurrencyStamp = "91a9d2e1-4522-453b-97f8-d24e60c8ee18",
                             Email = "teste@teste.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTE@TESTE.COM",
-                            NormalizedUserName = "TESTE@TESTE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP+hZ/s3GlJmSh9Umslpz/DZlidRXTEBoRT6h9NX8WkXHBrYdViAzTDQ0+fnhm5TnA==",
+                            NormalizedUserName = "ADMINISTRADOR",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGIMwe3cBLD5n5M1S+WiqrOFkjlrSynzJ2MmRYk/zZwg+sw7dtLWivNRer9wL6ByeQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "26b87e37-ebb0-4b45-9fa8-eb80bda5f72a",
+                            SecurityStamp = "",
                             TwoFactorEnabled = false,
-                            UserName = "teste@teste.com"
+                            UserName = "Administrador"
                         });
                 });
 

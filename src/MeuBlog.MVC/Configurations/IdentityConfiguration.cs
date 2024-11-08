@@ -9,7 +9,7 @@ namespace MeuBlog.Mvc.Configurations
         public static WebApplicationBuilder AddIdentityConfiguration(this WebApplicationBuilder builder)
         {
             builder.Services
-                .AddIdentity<UsuarioAplicacao, IdentityRole>(options =>
+                .AddIdentity<IdentityUser, IdentityRole>(options =>
                     {
                         options.SignIn.RequireConfirmedAccount = false;
                         options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ ";

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace MeuBlog.Shared.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<UsuarioAplicacao>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext()
         {
@@ -30,16 +30,17 @@ namespace MeuBlog.Shared.Data
                 IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(path)
                 .AddJsonFile("sharedsettings.json")
-                .Build();
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                .Build();                
+                optionsBuilder.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
             }
+            
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly((typeof(ApplicationDbContext).Assembly));
-            builder.SeedUsuarioAplicacaoAdmin();
+            builder.SeedUsuarioAplicacaoAdmin(Users, Autores);
         }
     }
 }

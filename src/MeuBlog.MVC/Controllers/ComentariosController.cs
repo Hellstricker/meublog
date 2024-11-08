@@ -25,7 +25,7 @@ namespace MeuBlog.Mvc.Controllers
             var claim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (claim == null) return Unauthorized();
 
-            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.UsuarioAplicacaoId == claim.Value);
+            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.Id == claim.Value);
 
             if (autor == null) return NotFound();
 
@@ -64,7 +64,7 @@ namespace MeuBlog.Mvc.Controllers
             return View(comentario);
         }
                 
-        [HttpPost("editar")]
+        [HttpPost("editar/{id:int}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,PostId,Descricao,AutorId,DataCriacao,DataAtualizacao")] Comentario comentario)
         {

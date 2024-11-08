@@ -62,7 +62,7 @@ namespace MeuBlog.Api.Controllers
 
             if (_context.Posts == null) return Problem("Falha ao criar post", statusCode: StatusCodes.Status400BadRequest);
 
-            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.UsuarioAplicacaoId == claim.Value);
+            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.Id == claim.Value);
             if (autor == null) return Unauthorized();
 
             ModelState.Remove("DataPublicacao");

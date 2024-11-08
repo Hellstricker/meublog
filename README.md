@@ -26,7 +26,7 @@ O projeto consiste em:
   - ASP.NET Core MVC
   - ASP.NET Core Web API
   - Entity Framework Core
-- **Banco de Dados:** SQL Server
+- **Banco de Dados:** SQLite
 - **Autenticação e Autorização:**
   - ASP.NET Core Identity
   - JWT (JSON Web Token) para autenticação na API
@@ -60,7 +60,7 @@ A estrutura do projeto é organizada da seguinte forma:
 ### **Pré-requisitos**
 
 - .NET SDK 8.0 ou superior
-- SQL Server
+- SQLite
 - Visual Studio 2022 ou superior (ou qualquer IDE de sua preferência)
 - Git
 
@@ -71,7 +71,7 @@ A estrutura do projeto é organizada da seguinte forma:
    - `cd meublog`
 
 2. **Configuração do Banco de Dados:**
-   - No arquivo `sharedsettings.json`, localizado na pasta **Data** do projeto **MeuBlog.Shared**, configure a string de conexão do SQL Server. Esta configuração é compartilhada por todos os projetos incluídos nesta solução.
+   - No arquivo `sharedsettings.json`, localizado na pasta **Data** do projeto **MeuBlog.Shared**, configure a string de conexão do SQLite. Esta configuração é compartilhada por todos os projetos incluídos nesta solução.
    - Utilizando prompt de comando, acesse a pasta raiz do projeto **MeuBlog.Shared** e execute o comando **dotnet ef database update**
    - O seed configurará um usuário com perfil Admin. 
      - login: teste@teste.com

@@ -28,7 +28,7 @@ namespace MeuBlog.Shared.Domain
         public DateTime? DataAtualizacao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é necessário")]
-        public int? AutorId { get; set; }
+        public string? AutorId { get; set; }
         
         [NotMapped]
         public Autor? Autor { get; set; }
@@ -39,7 +39,7 @@ namespace MeuBlog.Shared.Domain
             var claimId = User.FindFirst(ClaimTypes.NameIdentifier);
             if (claimId == null) return false;            
             if (Autor == null) return false;            
-            return Autor.UsuarioAplicacaoId == claimId.Value;
+            return Autor.Id == claimId.Value;
         }
     }
 }

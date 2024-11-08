@@ -20,11 +20,11 @@ namespace MeuBlog.Mvc.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<UsuarioAplicacao> _signInManager;
-        private readonly UserManager<UsuarioAplicacao> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<UsuarioAplicacao> signInManager, ILogger<LoginModel> logger, UserManager<UsuarioAplicacao> userManager)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;

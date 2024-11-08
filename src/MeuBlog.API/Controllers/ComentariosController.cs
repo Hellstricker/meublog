@@ -59,7 +59,7 @@ namespace MeuBlog.Api.Controllers
             var post = await _context.Posts.FindAsync(comentario.PostId);
             if (post == null) return Problem("Falha ao criar comentario", statusCode: StatusCodes.Status400BadRequest);
 
-            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.UsuarioAplicacaoId == claim.Value);
+            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.Id == claim.Value);
             if (autor == null) return Unauthorized();
 
             ModelState.Remove("DataCriacao");

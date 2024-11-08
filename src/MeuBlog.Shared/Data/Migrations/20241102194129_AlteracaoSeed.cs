@@ -5,7 +5,7 @@
 namespace MeuBlog.Shared.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedUsuarioAdmin : Migration
+    public partial class AlteracaoSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -13,22 +13,22 @@ namespace MeuBlog.Shared.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "535e42c6-355d-4d18-b146-6ac6463fa318", null, "Admin", "ADMIN" });
+                values: new object[] { "6e8fc543-d816-4592-88de-43c1e1684c1a", null, "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "7bfdaa3c-5099-4da5-882e-58d59e9f4e72", 0, "65a84287-c243-41e2-a84b-0c9a32b08bf7", "teste@teste.com", true, false, null, "TESTE@TESTE.COM", "ADMINISTRADOR", "AQAAAAIAAYagAAAAEN4m+Of7ZrA8vIK14cZ8a8qeQpVrDfMBzUgndsYdSzXLrKcJ4CYNQDf/I19kiSAbCQ==", null, false, "", false, "Administrador" });
+                values: new object[] { "4936c34c-d5a9-4adf-81d5-2f6d956dbc32", 0, "91a9d2e1-4522-453b-97f8-d24e60c8ee18", "teste@teste.com", true, false, null, "TESTE@TESTE.COM", "ADMINISTRADOR", "AQAAAAIAAYagAAAAEGIMwe3cBLD5n5M1S+WiqrOFkjlrSynzJ2MmRYk/zZwg+sw7dtLWivNRer9wL6ByeQ==", null, false, "", false, "Administrador" });
+
+            migrationBuilder.InsertData(
+                table: "Autores",
+                columns: new[] { "Id", "Nome" },
+                values: new object[] { "4936c34c-d5a9-4adf-81d5-2f6d956dbc32", "Administrador" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "535e42c6-355d-4d18-b146-6ac6463fa318", "7bfdaa3c-5099-4da5-882e-58d59e9f4e72" });
-
-            migrationBuilder.InsertData(
-                table: "Autores",
-                columns: new[] { "Id", "Nome", "UsuarioAplicacaoId" },
-                values: new object[] { 1, "Administrador", "7bfdaa3c-5099-4da5-882e-58d59e9f4e72" });
+                values: new object[] { "6e8fc543-d816-4592-88de-43c1e1684c1a", "4936c34c-d5a9-4adf-81d5-2f6d956dbc32" });
         }
 
         /// <inheritdoc />
@@ -37,22 +37,22 @@ namespace MeuBlog.Shared.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "535e42c6-355d-4d18-b146-6ac6463fa318", "7bfdaa3c-5099-4da5-882e-58d59e9f4e72" });
+                keyValues: new object[] { "6e8fc543-d816-4592-88de-43c1e1684c1a", "4936c34c-d5a9-4adf-81d5-2f6d956dbc32" });
 
             migrationBuilder.DeleteData(
                 table: "Autores",
                 keyColumn: "Id",
-                keyValue: 1);
+                keyValue: "4936c34c-d5a9-4adf-81d5-2f6d956dbc32");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "535e42c6-355d-4d18-b146-6ac6463fa318");
+                keyValue: "6e8fc543-d816-4592-88de-43c1e1684c1a");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "7bfdaa3c-5099-4da5-882e-58d59e9f4e72");
+                keyValue: "4936c34c-d5a9-4adf-81d5-2f6d956dbc32");
         }
     }
 }

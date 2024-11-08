@@ -40,4 +40,6 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 
+//app.SeedData().Wait();
+
 app.Run();

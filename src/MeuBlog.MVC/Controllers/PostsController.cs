@@ -4,8 +4,7 @@ using MeuBlog.Shared.Data;
 using MeuBlog.Shared.Domain;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using MeuBlog.Shared.Data.Migrations;
+
 
 
 namespace MeuBlog.Mvc.Controllers
@@ -64,7 +63,7 @@ namespace MeuBlog.Mvc.Controllers
             var claim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (claim == null) return Unauthorized();
             
-            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.UsuarioAplicacaoId == claim.Value);
+            var autor = await _context.Autores.FirstOrDefaultAsync(a => a.Id == claim.Value);
 
             if (autor == null) return Unauthorized();
                         

@@ -12,7 +12,7 @@ namespace MeuBlog.Api.Configurations
     {
         public static WebApplicationBuilder AddIdentityConfiguration(this WebApplicationBuilder builder)
         {
-            builder.Services.AddIdentity<UsuarioAplicacao, IdentityRole>()
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                             .AddRoles<IdentityRole>()
                             .AddEntityFrameworkStores<ApplicationDbContext>();
 

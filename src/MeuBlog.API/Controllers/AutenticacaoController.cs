@@ -15,13 +15,13 @@ namespace MeuBlog.Api.Controllers
     [Route("api/v1/meublog/conta")]
     public class AutenticacaoController : ControllerBase
     {
-        private readonly SignInManager<UsuarioAplicacao> _signInManager;
-        private readonly UserManager<UsuarioAplicacao> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly JwtSettings _jwtSettings;
         private readonly ApplicationDbContext _context;
         public AutenticacaoController(
-            SignInManager<UsuarioAplicacao> signInManager,
-            UserManager<UsuarioAplicacao> userManager,
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
             IOptions<JwtSettings> jwtSettings,
             ApplicationDbContext context)
         {
@@ -40,7 +40,7 @@ namespace MeuBlog.Api.Controllers
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
 
-            var user = new UsuarioAplicacao()
+            var user = new IdentityUser()
             {
                 UserName = model.Email,
                 Email = model.Email,
@@ -55,7 +55,7 @@ namespace MeuBlog.Api.Controllers
             var autor = new Autor()
             {
                 Nome = model.Nome,
-                UsuarioAplicacaoId = await _userManager.GetUserIdAsync(user)
+                Id = await _userManager.GetUserIdAsync(user)
             };
             _context.Add(autor);
             await _context.SaveChangesAsync();
@@ -73,9 +73,13 @@ namespace MeuBlog.Api.Controllers
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
 
-            var ressult = await _signInManager.PasswordSignInAsync(model.Email!, model.Password!, false, true);
+            var user = await _userManager.FindByEmailAsync(model.Email!);
 
-            if (!ressult.Succeeded) return Problem("Usuário ou senha incorretos, tente novamente", statusCode:StatusCodes.Status400BadRequest);
+            if (user == null) return Problem("Usuário ou senha incorretos, tente novamente", statusCode: StatusCodes.Status400BadRequest);
+
+            var result = await _signInManager.PasswordSignInAsync(_userManager.FindByEmailAsync(model.Email!).Result!, model.Password!, false, true);
+
+            if (!result.Succeeded) return Problem("Usuário ou senha incorretos, tente novamente", statusCode:StatusCodes.Status400BadRequest);
 
             return Ok(await GetJwt(model.Email!));
         }

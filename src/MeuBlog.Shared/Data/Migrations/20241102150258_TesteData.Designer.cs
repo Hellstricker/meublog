@@ -3,6 +3,7 @@ using System;
 using MeuBlog.Shared.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeuBlog.Shared.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241102150258_TesteData")]
+    partial class TesteData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -34,7 +37,7 @@ namespace MeuBlog.Shared.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4936c34c-d5a9-4adf-81d5-2f6d956dbc32",
+                            Id = "46bc95fd-ca84-49c9-a52f-aa3e6637aafb",
                             Nome = "Administrador"
                         });
                 });
@@ -53,13 +56,13 @@ namespace MeuBlog.Shared.Data.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("datetime('now')");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<DateTime?>("DataCriacao")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("datetime('now')");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -93,13 +96,13 @@ namespace MeuBlog.Shared.Data.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("datetime('now')");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<DateTime?>("DataPublicacao")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValueSql("datetime('now')");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -146,7 +149,7 @@ namespace MeuBlog.Shared.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6e8fc543-d816-4592-88de-43c1e1684c1a",
+                            Id = "f78f8562-ac56-4e35-9af5-1e5d6e452e90",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -241,19 +244,19 @@ namespace MeuBlog.Shared.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4936c34c-d5a9-4adf-81d5-2f6d956dbc32",
+                            Id = "46bc95fd-ca84-49c9-a52f-aa3e6637aafb",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "58aaf969-e4ef-45d0-af3c-bafdf07fd540",
+                            ConcurrencyStamp = "09ee7bb9-a711-492d-b1f7-a9aa9a6f5620",
                             Email = "teste@teste.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTE@TESTE.COM",
-                            NormalizedUserName = "TESTE@TESTE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP+hZ/s3GlJmSh9Umslpz/DZlidRXTEBoRT6h9NX8WkXHBrYdViAzTDQ0+fnhm5TnA==",
+                            NormalizedUserName = "ADMINISTRADOR",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFQtBks9XTS4hDyT2iZRoa97tKRevkEw9nuytU/OTBhZU1KO+ptaYOZpidYQmAHX1A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "26b87e37-ebb0-4b45-9fa8-eb80bda5f72a",
+                            SecurityStamp = "",
                             TwoFactorEnabled = false,
-                            UserName = "teste@teste.com"
+                            UserName = "Administrador"
                         });
                 });
 
@@ -319,8 +322,8 @@ namespace MeuBlog.Shared.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "4936c34c-d5a9-4adf-81d5-2f6d956dbc32",
-                            RoleId = "6e8fc543-d816-4592-88de-43c1e1684c1a"
+                            UserId = "46bc95fd-ca84-49c9-a52f-aa3e6637aafb",
+                            RoleId = "f78f8562-ac56-4e35-9af5-1e5d6e452e90"
                         });
                 });
 
